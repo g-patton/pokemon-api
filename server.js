@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express();
+const cors = require('cors')
 const PORT = 8000
+
+app.use(cors())
 
 const pokemon = {
     'bulbasaur': {
@@ -35,8 +38,8 @@ const pokemon = {
     },
 }
 
-app.get('/', (request, response)=>{
-    response.sendFile(__dirname + '/index.html');
+app.get('/', (request, response) => {
+    response.sendFile(__dirname + '/index.html')
 });
 
 app.get('/api/:name', (request, response)=>{
@@ -48,7 +51,6 @@ app.get('/api/:name', (request, response)=>{
     }
 });
 
-app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`the server is running on port ${PORT}.
-    Better go catch it!`);
-});
+app.listen(process.env.PORT || PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+})
